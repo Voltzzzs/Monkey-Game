@@ -1,4 +1,5 @@
 body{
+    user-select: none;
     display: flex;
     background-color: rgb(49, 63, 75);
     height: 500px;
@@ -6,7 +7,6 @@ body{
 }
 
 .click{
-    user-select: none;
     color: black;
     width: 100vh;
     aspect-ratio: 1 / 1;
@@ -22,6 +22,7 @@ body{
 }
 
 .gameover{
+    cursor: pointer;
     border-radius: 10px;
     text-align: center;
     align-content: center;
@@ -34,7 +35,12 @@ body{
     aspect-ratio: 1/2;
     max-height: 300px;
     max-width: 500px;
-    font-size: 5em;
     border: 3px solid black;
+    font-size: 4em;
+    align-items: center;
+    justify-content: center;
 }
 
+.gameover:hover{
+    transform: scale(1.1);
+}

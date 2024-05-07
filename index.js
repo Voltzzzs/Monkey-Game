@@ -1,5 +1,9 @@
 const click = document.querySelector(".click")
-const seq1 = document.querySelector(".seq1")
+document.querySelector(".gameover").addEventListener("click",()=>{
+    location.reload()
+})
+
+
 
 let clickedSequence = []
 
@@ -22,16 +26,12 @@ function createClick (){
     positionClick(numb)
     totalClick.push(numb)
     numb.addEventListener("click", (event) => {
-        clickedSequence = []
         clickedSequence.push(event.target)
         event.target.style.display = "none";
         checkSequence()
         checkWin()
     });
-
-    console.log(totalClick)
-    console.log(clickedSequence)
-
+    
 }
 
 
@@ -49,18 +49,35 @@ function positionClick(num){
 function checkSequence(){
     if(clickedSequence[clickedSequence.length - 1] !== totalClick[clickedSequence.length - 1]){
         document.querySelector(".gameover").style.display = "flex"
-    }
-}
-
-function checkWin(){
-    if(clickedSequence.length === totalClick.length){
         document.querySelectorAll(".click").forEach((element)=>{
-            element.style.display = "flex"
+            element.style.display = "none"
         })
-        createClick()
     }
 }
 
 
 
 createClick()
+createClick()
+
+const seq1 = document.querySelector(".seq1")
+
+seq1.addEventListener("click",(event)=>{
+    document.querySelectorAll(".click").forEach((element)=>{
+        element.style.backgroundColor = "black"
+    })
+})
+
+
+function checkWin(){
+    if(clickedSequence.length === totalClick.length){
+        clickedSequence = []
+        document.querySelectorAll(".click").forEach((element)=>{
+            element.style.display = "flex"
+            positionClick(element)
+            element.style.backgroundColor = "rgb(49, 63, 75)"
+        })
+        createClick()
+
+    }
+}
