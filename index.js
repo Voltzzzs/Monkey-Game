@@ -1,3 +1,6 @@
+const audioclick = document.querySelector("#clicksound")
+
+
 const click = document.querySelector(".click")
 document.querySelector(".gameover").addEventListener("click",()=>{
     location.reload()
@@ -26,6 +29,7 @@ function createClick (){
     positionClick(numb)
     totalClick.push(numb)
     numb.addEventListener("click", (event) => {
+        audioclick.play()
         clickedSequence.push(event.target)
         event.target.style.display = "none";
         checkSequence()
