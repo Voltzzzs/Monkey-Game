@@ -2,11 +2,10 @@ body{
     user-select: none;
     display: flex;
     background-color: rgb(51, 77, 99);
-    height: 500px;
-    width: 700px;
 }
 
 .click{
+    z-index: 100;
     color: black;
     width: 100vh;
     aspect-ratio: 1 / 1;
@@ -47,6 +46,8 @@ body{
 }
 
 .placar{
+    position: absolute;
+    left: 20em;
     color: aliceblue;
     width: 100px;
     height: 100px;
@@ -56,3 +57,14 @@ body{
     grid-template-rows: 1fr 1fr;
 }
 
+.playground {
+
+    left: 11em;
+    position: absolute;
+    top:7em;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    width: 60em;
+    height: 30em; 
+}

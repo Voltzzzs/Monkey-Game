@@ -1,9 +1,19 @@
 const audioclick = document.querySelector("#clicksound")
 const points = document.querySelector(".difficuty")
 const recorde = document.querySelector(".record")
+const playground = document.querySelector(".playground")
 
 recorde.textContent = localStorage.getItem("record")
 let current = 0
+
+let positions = []
+function checkPosition(){
+    
+}
+
+
+
+
 
 
 const click = document.querySelector(".click")
@@ -24,7 +34,6 @@ let viewportHeight = window.innerHeight;
 
 
 
-
 function createClick (){
     let pra = totalClick.length + 1
     let numb = document.createElement('div')
@@ -32,7 +41,7 @@ function createClick (){
     numb.textContent = pra
     positionClick(numb)
     totalClick.push(numb)
-    document.body.appendChild(numb);
+    playground.appendChild(numb);
     numb.addEventListener("click", (event) => {
         audioclick.play()
         clickedSequence.push(event.target)
@@ -43,10 +52,22 @@ function createClick (){
 }
 
 
-function positionClick(num){
-    num.style.top = Math.floor(Math.random() *(viewportHeight - 90)) + 'px'
-    num.style.left = Math.floor(Math.random() *(viewportWidth - 90)) + 'px'
+function positionClick(numb){
+    let row, col, arte
+    
+    do{
+        row = Math.floor(Math.random() * 5) + 1
+        col = Math.floor(Math.random() * 5) + 1
+        arte = `${row}${col}`
+    } while(positions.includes(arte))
 
+  
+    numb.style.gridColumn = `${col}`;
+    numb.style.gridRow = `${row}`;
+
+   
+
+    return positions.push(arte), console.log(positions)
 }
 
 
@@ -84,6 +105,7 @@ seq1.addEventListener("click",(event)=>{
 function checkWin(){
     if(clickedSequence.length === totalClick.length){
         clickedSequence = []
+        positions = []
         document.querySelectorAll(".click").forEach((element)=>{
             element.style.display = "flex"
             positionClick(element)
