@@ -1,7 +1,7 @@
 body{
     user-select: none;
     display: flex;
-    background-color: rgb(49, 63, 75);
+    background-color: rgb(51, 77, 99);
     height: 500px;
     width: 700px;
 }
@@ -11,7 +11,7 @@ body{
     width: 100vh;
     aspect-ratio: 1 / 1;
     max-width: 80px;
-    background-color: rgb(49, 63, 75);
+    background-color: rgb(51, 77, 99);
     border-radius: 10px;
     border: 3px solid black;
     cursor: pointer;
@@ -35,12 +35,24 @@ body{
     aspect-ratio: 1/2;
     max-height: 300px;
     max-width: 500px;
-    border: 3px solid black;
+    border: 3px solid rgb(0, 0, 0);
     font-size: 4em;
     align-items: center;
     justify-content: center;
+    transition: transform 0.3s ease;
 }
 
 .gameover:hover{
     transform: scale(1.1);
 }
+
+.placar{
+    color: aliceblue;
+    width: 100px;
+    height: 100px;
+    display: grid;
+    font-size: 2em;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+

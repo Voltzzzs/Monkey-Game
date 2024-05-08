@@ -1,4 +1,9 @@
 const audioclick = document.querySelector("#clicksound")
+const points = document.querySelector(".difficuty")
+const recorde = document.querySelector(".record")
+
+recorde.textContent = localStorage.getItem("record")
+let current = 0
 
 
 const click = document.querySelector(".click")
@@ -25,9 +30,9 @@ function createClick (){
     let numb = document.createElement('div')
     numb.className = `click seq${pra}`
     numb.textContent = pra
-    document.body.appendChild(numb);
     positionClick(numb)
     totalClick.push(numb)
+    document.body.appendChild(numb);
     numb.addEventListener("click", (event) => {
         audioclick.play()
         clickedSequence.push(event.target)
@@ -35,7 +40,6 @@ function createClick (){
         checkSequence()
         checkWin()
     });
-    
 }
 
 
@@ -52,10 +56,14 @@ function positionClick(num){
 
 function checkSequence(){
     if(clickedSequence[clickedSequence.length - 1] !== totalClick[clickedSequence.length - 1]){
+        localStora()
         document.querySelector(".gameover").style.display = "flex"
         document.querySelectorAll(".click").forEach((element)=>{
             element.style.display = "none"
+            
         })
+        current = 0
+        points.textContent = current
     }
 }
 
@@ -79,9 +87,25 @@ function checkWin(){
         document.querySelectorAll(".click").forEach((element)=>{
             element.style.display = "flex"
             positionClick(element)
-            element.style.backgroundColor = "rgb(49, 63, 75)"
+            element.style.backgroundColor = "rgb(51, 77, 99)"
+            element.style.textAlign = "center"
+            element.style.justifyContent = "center";
         })
         createClick()
 
+        current++
+        points.textContent = current
+
     }
+}
+
+
+
+function localStora(){
+    let prevRecord = localStorage.getItem("record")
+
+    if(current > prevRecord){
+        localStorage.setItem("record", current)
+    }
+    recorde.textContent = localStorage.getItem("record")
 }
